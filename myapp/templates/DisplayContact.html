@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                                            <div class="card-header">
+                                                <h3>Product Details</h3>
+<!--                                                <span>use class <code>table-inverse</code> inside table element</span>-->
+                                                <div class="card-header-right">
+                                                    <ul class="list-unstyled card-option">
+                                                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                        <li><i class="fa fa-minus minimize-card"></i></li>
+                                                        <li><i class="fa fa-refresh reload-card"></i></li>
+                                                        <li><i class="fa fa-trash close-card"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <table class="table table-inverse">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th>Name</th>
+                                                                <th>Email</th>
+                                                                <th>Phone</th>
+                                                                <th>Subject</th>
+                                                                <th>Message</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for i in contact %}
+                                                           <tr>
+                                                               <td>{{i.ConName}}</td>
+                                                               <td>{{i.ConEmail}}</td>
+                                                               <td>{{i.ConPhone}}</td>
+                                                               <td>{{i.Subject}}</td>
+                                                               <td>{{i.Message}}</td>
+
+
+                                                               <td>
+                                                                   <form action="{% url 'delete_page' contactid=i.id %}">
+                                                                       <button type="submit">Delete</button>
+                                                                   </form>
+                                                               </td>
+
+                                                           </tr>
+
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+</body>
+</html>
+{% endblock %}
